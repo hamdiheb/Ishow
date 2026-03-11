@@ -17,9 +17,13 @@ navbar {
   justify-content: space-between;
   background: linear-gradient(rgb(15, 23, 42));
   max-height: 72px;
-  padding: 18px 32px;
+  padding: 30px 112px;
   position: sticky;
   border-bottom: 1px solid #1e293b;
+}
+
+.nav-item {
+  display: flex;
 }
 
 #nav-logo {
@@ -28,14 +32,20 @@ navbar {
 }
 
 #nav-home-logo {
-  width: 25px;
-  height: 21px;
+  width: 24px;
+  height: 32px;
 }
 
 #nav-home-title {
-  font-size: 1.5rem;
-  font-weight: 400;
   color: #c084fc;
-  text-decoration: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 7px;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+#nav-home-title:hover {
+  color: #dec4fa;
 }
