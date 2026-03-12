@@ -27,31 +27,49 @@ function createShowComponent(show) {
   return showArticle
 }
 
-async function displayShows(displayMax) {
-  const showsArray = await fetchShows()
-  if (displayMax < showsArray.length) {
-    const showsDisplay = document.querySelector('#main_show_display')
-    showsDisplay.innerHTML = ``
-    for (let i = 0; i < displayMax; i++) {
-      const showComponent = createShowComponent(showsArray[i])
-      showsDisplay.appendChild(showComponent)
-    }
-  } else {
-    alert('No more shows to render')
+function resetNode(node) {
+  while (node.firstChild) {
+    node.removeChild(node.firstChild)
   }
 }
 
-function loadShow(displayMax) {
+async function displayShows(displayMax, showsArray) {
+  const showsDisplay = document.querySelector('#main_show_display')
+  resetNode(showsDisplay)
+  for (let i = 0; i < displayMax; i++) {
+    const showComponent = createShowComponent(showsArray[i])
+    showsDisplay.appendChild(showComponent)
+  }
+}
+
+function loadShow(displayMax, showsArray) {
   const loadBtn = document.querySelector('#load_btn')
   loadBtn.addEventListener('click', () => {
     displayMax = displayMax + 24
-    displayShows(displayMax)
+    displayShows(displayMax, showsArray)
   })
 }
 
-function init(displayMax) {
-  displayShows(displayMax)
-  loadShow(displayMax)
+function filterShow(showsArray) {
+  const inputSearch = document.querySelector('#main_input_search')
+  inputSearch.addEventListener('keyup', (event) => {
+    const filteredShows = showsArray.filter((show) => {
+      if (show.name.toUpperCase().includes(inputSearch.value.toUpperCase())) {
+        return show
+      }
+    })
+    displayShows(filteredShows.length, filteredShows)
+    if (inputSearch.value.length === 0) {
+      displayShows(displayMax, showsArray)
+    }
+  })
+}
+
+async function init(displayMax) {
+  const showsArray = await fetchShows()
+  displayShows(displayMax, showsArray)
+  loadShow(displayMax, showsArray)
+  filterShow(showsArray)
 }
 
 init(displayMax)
