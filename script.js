@@ -1,3 +1,5 @@
+let displayMax = 24
+
 async function fetchShows() {
   const query = await fetch('https://api.tvmaze.com/shows?page=1')
   const respond = await query.json()
@@ -27,16 +29,29 @@ function createShowComponent(show) {
 
 async function displayShows(displayMax) {
   const showsArray = await fetchShows()
-  const showsDisplay = document.querySelector('#main_show_display')
-
-  for (let i = 0; i < displayMax; i++) {
-    const showComponent = createShowComponent(showsArray[i])
-    showsDisplay.appendChild(showComponent)
+  if (displayMax < showsArray.length) {
+    const showsDisplay = document.querySelector('#main_show_display')
+    showsDisplay.innerHTML = ``
+    for (let i = 0; i < displayMax; i++) {
+      const showComponent = createShowComponent(showsArray[i])
+      showsDisplay.appendChild(showComponent)
+    }
+  } else {
+    alert('No more shows to render')
   }
 }
-function init(displayMax) {
-  displayShows(displayMax)
+
+function loadShow(displayMax) {
+  const loadBtn = document.querySelector('#load_btn')
+  loadBtn.addEventListener('click', () => {
+    displayMax = displayMax + 24
+    displayShows(displayMax)
+  })
 }
 
-const displayMax = 24
+function init(displayMax) {
+  displayShows(displayMax)
+  loadShow(displayMax)
+}
+
 init(displayMax)
