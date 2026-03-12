@@ -120,3 +120,20 @@ main {
   background: #7e22ce;
   transition: ease(150);
 }
+
+.show_visual {
+  position: relative;
+}
+.show_rating {
+  display: flex;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  background-color: rgba(234, 179, 8, 0.9);
+  backdrop-filter: calc(4px);
+  border-radius: 6px;
+  align-items: center;
+  color: #000000;
+  gap: 4px;
+}

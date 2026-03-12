@@ -9,20 +9,30 @@ async function fetchShows() {
 function createShowComponent(show) {
   const showArticle = document.createElement('article')
 
-  const showTitle = document.createElement('h3')
-  showTitle.textContent = show.name
   const showImg = document.createElement('img')
   showImg.src = show.image.medium
   showImg.classList.add('show_img')
+  const showRate = document.createElement('p')
+  showRate.textContent = show.rating.average
+  showRate.classList.add('show_rating')
+
+  const showVisual = document.createElement('div')
+  showVisual.classList.add('show_visual')
+  showVisual.append(showImg, showRate)
+  const showTitle = document.createElement('h3')
+  showTitle.textContent = show.name
+
   const showDate = document.createElement('p')
   showDate.textContent = show.premiered
+
   const showDescription = document.createElement('p')
   showDescription.innerHTML = show.summary
 
   const showData = document.createElement('div')
-  showData.append(showTitle, showDate, showDescription)
   showData.classList.add('show_component_data')
-  showArticle.append(showImg, showData)
+  showData.append(showTitle, showDate, showDescription)
+
+  showArticle.append(showVisual, showData)
   showArticle.classList.add('show_component')
   return showArticle
 }
