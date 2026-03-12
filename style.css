@@ -15,7 +15,7 @@ body {
 navbar {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(rgb(15, 23, 42));
+  background: linear-gradient(to right, #23083f, #23083f, #3f0e74);
   max-height: 72px;
   padding: 30px 112px;
   position: sticky;
@@ -48,4 +48,52 @@ navbar {
 
 #nav-home-title:hover {
   color: #dec4fa;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 112px;
+  color: white;
+  background: linear-gradient(to bottom right, #1e1b4b, #3b0764, #020617);
+}
+
+#main_show_display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.show_component {
+  width: 23.9%;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 8px;
+  height: 100%;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.show_component:hover {
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2);
+  transition: all 300ms ease;
+}
+
+.show_component_data {
+  padding: 10px;
+}
+
+.show_img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #0f172a;
+  overflow: hidden;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+}
+
+.show_img:hover {
+  scale: calc(1.05);
+  transition: 300ms;
 }

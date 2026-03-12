@@ -3,6 +3,7 @@
   <head>
     <title>Ishow</title>
     <meta charset="utf-8" />
+
     <link href="style.css" rel="stylesheet" />
   </head>
   <body lang="en">
@@ -16,7 +17,23 @@
         <a href="" id="nav-home-title">Shows</a>
       </div>
     </navbar>
-    <main></main>
+    <main>
+      <section class="main_welcome">
+        <h1>Tv Shows</h1>
+        <p>Browse and discover amazing TV shows</p>
+      </section>
+      <section class="main_filtering">
+        <label>Type to search</label>
+        <input type="text" placeholder="Type here" />
+        <button>Sort by rating</button>
+        <button>Sort by favorites</button>
+      </section>
+      <section id="main_show_display"></section>
+      <section id="main_show_load">
+        <button>Load</button>
+      </section>
+    </main>
     <footer></footer>
+    <script src="./script.js"></script>
   </body>
 </html>
