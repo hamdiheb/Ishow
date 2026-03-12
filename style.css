@@ -32,7 +32,7 @@ navbar {
 }
 
 #nav-home-logo {
-  width: 25px;
+  width: 24px;
   height: 32px;
 }
 
@@ -65,7 +65,7 @@ main {
 }
 
 .show_component {
-  width: 25.9%;
+  width: 23.9%;
   border: 1px solid rgba(51, 65, 85, 0.5);
   border-radius: 8px;
   height: 100%;
