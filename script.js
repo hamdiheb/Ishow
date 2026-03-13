@@ -75,11 +75,24 @@ function filterShow(showsArray) {
   })
 }
 
+function sortRating(showsArray) {
+  const sortedShowsRating = showsArray.sort(
+    (showA, showB) => showA.rating.average - showB.rating.average,
+  )
+
+  const sortBtn = document.querySelector('#sort_rate_btn')
+  sortBtn.addEventListener('click', () => {
+    displayShows(sortedShowsRating.length, sortedShowsRating)
+    console.log('hi')
+  })
+}
+
 async function init(displayMax) {
   const showsArray = await fetchShows()
   displayShows(displayMax, showsArray)
   loadShow(displayMax, showsArray)
   filterShow(showsArray)
+  sortRating(showsArray)
 }
 
 init(displayMax)
