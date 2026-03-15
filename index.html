@@ -10,23 +10,39 @@
     <navbar>
       <div class="nav-item">
         <img src="./img/film.svg" alt="Ishow logo" id="nav-logo" />
-        <a href="" id="nav-logo-title">Ishow</a>
+        <a href="/index.html" id="nav-logo-title">Ishow</a>
       </div>
       <div class="nav-item">
         <img src="./img/house.svg" alt="Home Logo" id="nav-home-logo" />
         <a href="" id="nav-home-title">Shows</a>
       </div>
     </navbar>
+    <template>
+      <a>Return to Home</a>
+      <article class="show_data">
+        <div class="show_img_data">
+          <img src="" alt="show_img" />
+        </div>
+        <div class="show_data_items">
+          <h1 class="show_title_data">Under the Dome</h1>
+          <div class="show_details_items">
+            <p id="show_release">2013</p>
+            <p id="show_data_rated">6.6</p>
+            <p id="show_type">Drama</p>
+          </div>
+          <p id="show_details_description">Under the dome</p>
+        </div>
+      </article>
+    </template>
     <main>
       <section class="main_welcome">
         <h1>Tv Shows</h1>
         <p>Browse and discover amazing TV shows</p>
       </section>
       <section class="main_filtering">
-        <label>Type to search</label>
-        <input type="text" placeholder="Type here" id="main_input_search" />
-        <button id="sort_rate_btn">Sort by rating</button>
-        <button>Sort by favorites</button>
+        <input type="text" placeholder="Search shows by name" id="main_input_search" />
+        <button id="sort_rate_btn" class="sort__btn">Sort by rating</button>
+        <button class="sort__btn">Sort by favorites</button>
       </section>
       <section id="main_show_display"></section>
       <section id="main_show_load">

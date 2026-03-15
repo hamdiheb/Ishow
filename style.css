@@ -71,6 +71,8 @@ main {
   height: 100%;
   margin: 10px;
   overflow: hidden;
+  text-decoration: none;
+  color: white;
 }
 
 .show_component:hover {
@@ -136,4 +138,66 @@ main {
   align-items: center;
   color: #000000;
   gap: 4px;
+}
+
+.main_filtering {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+  display: flex;
+}
+
+#main_input_search {
+  width: 100%;
+  position: relative;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+#main_input_search:focus {
+  outline: 1px solid #a855f7;
+}
+
+.sort__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 150ms ease;
+  margin: 0 5px;
+}
+
+.sort__btn:hover {
+  border: 1px solid #a855f7;
+}
+
+.active_sort_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #9333ea;
+  border: 1px solid #9333ea;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 150ms ease;
+  margin: 0 5px;
+  border-radius: 8px;
 }

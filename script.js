@@ -7,6 +7,7 @@ async function fetchShows() {
 }
 
 function createShowComponent(show) {
+  const forwardShow = document.createElement('a')
   const showArticle = document.createElement('article')
 
   const showImg = document.createElement('img')
@@ -33,8 +34,10 @@ function createShowComponent(show) {
   showData.append(showTitle, showDate, showDescription)
 
   showArticle.append(showVisual, showData)
-  showArticle.classList.add('show_component')
-  return showArticle
+  forwardShow.classList.add('show_component')
+  forwardShow.href = `${window.location.origin}/?id=${show.id}`
+  forwardShow.append(showArticle)
+  return forwardShow
 }
 
 function resetNode(node) {
@@ -81,10 +84,60 @@ function sortRating(showsArray) {
   )
 
   const sortBtn = document.querySelector('#sort_rate_btn')
-  sortBtn.addEventListener('click', () => {
-    displayShows(sortedShowsRating.length, sortedShowsRating)
-    console.log('hi')
+  sortBtn.addEventListener('click', async () => {
+    if (sortBtn.className == 'sort__btn') {
+      sortBtn.setAttribute('class', 'active_sort_btn')
+      displayShows(displayMax, sortedShowsRating)
+    } else {
+      sortBtn.setAttribute('class', 'sort__btn')
+      const shows = await fetchShows()
+      displayShows(displayMax, shows)
+    }
   })
+}
+
+async function renderEp(main, showID) {
+  const req = await fetch(`https://api.tvmaze.com/shows/${showID}/episodes`)
+  const res = await req.json()
+  console.log(res)
+}
+
+function createShowData(show) {
+  const main = document.querySelector('main')
+
+  const showTemplate = document.querySelector('template')
+  const showClone = showTemplate.content.cloneNode(true)
+
+  const showImg = showClone.querySelector('img')
+  const showTitle = showClone.querySelector('.show_title_data')
+  const showRelease = showClone.querySelector('#show_release')
+  const showRating = showClone.querySelector('#show_data_rated')
+  const showType = showClone.querySelector('#show_type')
+  const showDescription = showClone.querySelector('#show_details_description')
+  let type = ''
+  show[0].genres.forEach((genre) => {
+    type = type + ` ` + genre
+  })
+
+  showImg.src = show[0].image.medium
+  showTitle.textContent = show[0].name
+  showRelease.textContent = show[0].premiered
+  showRating.textContent = show[0].rating.average
+  showType.textContent = type
+  showDescription.innerHTML = show[0].summary
+  main.append(showClone)
+  renderEp(main, show[0].id)
+}
+
+function renderShow(showsArray) {
+  const query = new URLSearchParams(window.location.search)
+  const showID = query.get('id')
+  const show = showsArray.filter((show) => show.id == showID)
+  if (showID) {
+    const main = document.querySelector('main')
+    resetNode(main)
+    createShowData(show)
+  }
 }
 
 async function init(displayMax) {
@@ -93,6 +146,7 @@ async function init(displayMax) {
   loadShow(displayMax, showsArray)
   filterShow(showsArray)
   sortRating(showsArray)
+  renderShow(showsArray)
 }
 
 init(displayMax)
