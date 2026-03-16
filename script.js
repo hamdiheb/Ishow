@@ -79,7 +79,7 @@ function filterShow(showsArray) {
 }
 
 function sortRating(showsArray) {
-  const sortedShowsRating = showsArray.sort(
+  const sortedShowsRating = [...showsArray].sort(
     (showA, showB) => showA.rating.average - showB.rating.average,
   )
 
@@ -90,8 +90,7 @@ function sortRating(showsArray) {
       displayShows(displayMax, sortedShowsRating)
     } else {
       sortBtn.setAttribute('class', 'sort__btn')
-      const shows = await fetchShows()
-      displayShows(displayMax, shows)
+      displayShows(displayMax, showsArray)
     }
   })
 }
@@ -99,7 +98,19 @@ function sortRating(showsArray) {
 async function renderEp(main, showID) {
   const req = await fetch(`https://api.tvmaze.com/shows/${showID}/episodes`)
   const res = await req.json()
-  console.log(res)
+  res.forEach((element) => {
+    const episodeClone = document.querySelector('.episode_display').content.cloneNode(true)
+    const episodeImage = episodeClone.querySelector('#episode_img_item')
+    const episodeTitle = episodeClone.querySelector('#episode_data_title')
+    const episodeDate = episodeClone.querySelector('#episode_data_date')
+    const episodeDescriptiong = episodeClone.querySelector('#episode_data_paragraph')
+    episodeImage.src = element.image.medium
+    const season = element.season.toString()
+    episodeTitle.textContent = `S${season.padStart(2, '0')}-${element.name}`
+    episodeDate.textContent = element.airdate
+    episodeDescriptiong.innerHTML = element.summary
+    main.append(episodeClone)
+  })
 }
 
 function createShowData(show) {
@@ -125,8 +136,9 @@ function createShowData(show) {
   showRating.textContent = show[0].rating.average
   showType.textContent = type
   showDescription.innerHTML = show[0].summary
-  main.append(showClone)
+
   renderEp(main, show[0].id)
+  main.append(showClone)
 }
 
 function renderShow(showsArray) {

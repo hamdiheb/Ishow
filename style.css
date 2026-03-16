@@ -168,6 +168,35 @@ main {
   outline: 1px solid #a855f7;
 }
 
+#episode_filter {
+  width: 100%;
+  position: relative;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+#episode_filter_season {
+  width: 100%;
+  position: relative;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  margin-right: 5px;
+}
 .sort__btn {
   display: flex;
   align-items: center;
@@ -200,4 +229,38 @@ main {
   transition: all 150ms ease;
   margin: 0 5px;
   border-radius: 8px;
+}
+
+.show_data {
+  font-size: 14px;
+  color: #cbd5e1;
+  display: flex;
+}
+
+.show_data_items {
+  padding: 20px;
+}
+
+#show_details_description {
+  /* max-width: 300px; */
+  margin: 0;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.episode {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+  display: flex;
+}
+
+#episode_img_item {
+  border-radius: 10px;
+}
+
+.episode_data {
+  padding: 10px;
 }
