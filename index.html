@@ -7,49 +7,49 @@
     <link href="style.css" rel="stylesheet" />
   </head>
   <body lang="en">
-    <header>
-      <navbar>
-        <div class="nav-item">
-          <img src="./img/film.svg" alt="Ishow logo" id="nav-logo" />
-          <a href="/index.html" id="nav-logo-title">Ishow</a>
+    <navbar>
+      <div class="nav-item">
+        <img src="./img/film.svg" alt="Ishow logo" id="nav-logo" />
+        <a href="/index.html" id="nav-logo-title">Ishow</a>
+      </div>
+      <div class="nav-item">
+        <img src="./img/house.svg" alt="Home Logo" id="nav-home-logo" />
+        <a href="" id="nav-home-title">Shows</a>
+      </div>
+    </navbar>
+    <!-- <header> -->
+    <template>
+      <a>Return to Home</a>
+      <article class="show_data">
+        <div class="show_img_data">
+          <img src="" alt="show_img" />
         </div>
-        <div class="nav-item">
-          <img src="./img/house.svg" alt="Home Logo" id="nav-home-logo" />
-          <a href="" id="nav-home-title">Shows</a>
+        <div class="show_data_items">
+          <h1 class="show_title_data">Under the Dome</h1>
+          <div class="show_details_items">
+            <p id="show_release">2013</p>
+            <p id="show_data_rated">6.6</p>
+            <p id="show_type">Drama</p>
+          </div>
+          <p id="show_details_description">Under the dome</p>
         </div>
-      </navbar>
-      <template>
-        <a>Return to Home</a>
-        <article class="show_data">
-          <div class="show_img_data">
-            <img src="" alt="show_img" />
-          </div>
-          <div class="show_data_items">
-            <h1 class="show_title_data">Under the Dome</h1>
-            <div class="show_details_items">
-              <p id="show_release">2013</p>
-              <p id="show_data_rated">6.6</p>
-              <p id="show_type">Drama</p>
-            </div>
-            <p id="show_details_description">Under the dome</p>
-          </div>
-        </article>
-        <article class="main_filtering">
-          <input type="text" id="episode_filter" placeholder="Search.." />
-          <select id="episode_filter_season"></select>
-        </article>
-      </template>
-      <template class="episode_display">
-        <section class="episode">
-          <img src="" alt="episode" id="episode_img_item" />
-          <article class="episode_data">
-            <h1 id="episode_data_title">Title</h1>
-            <p id="episode_data_date">Date</p>
-            <p id="episode_data_paragraph">Descriptiong</p>
-          </article>
-        </section>
-      </template>
-    </header>
+      </article>
+      <article class="main_filtering">
+        <input type="text" id="episode_filter" placeholder="Search.." />
+        <select id="episode_filter_season"></select>
+      </article>
+    </template>
+    <!-- </header> -->
+    <template id="episode">
+      <article class="episode">
+        <img src="" alt="episode" id="episode_img_item" />
+        <div class="episode_data">
+          <h1 id="episode_data_title">Title</h1>
+          <p id="episode_data_date">Date</p>
+          <p id="episode_data_paragraph">Descriptiong</p>
+        </div>
+      </article>
+    </template>
     <main>
       <section class="main_welcome">
         <h1>Tv Shows</h1>

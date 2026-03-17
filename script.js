@@ -95,25 +95,32 @@ function sortRating(showsArray) {
   })
 }
 
-async function renderEp(main, showID) {
+async function renderEp(main, showID, showImg) {
   const req = await fetch(`https://api.tvmaze.com/shows/${showID}/episodes`)
   const res = await req.json()
+  const episodesSection = document.createElement('section')
   res.forEach((element) => {
-    const episodeClone = document.querySelector('.episode_display').content.cloneNode(true)
+    const episodeClone = document.querySelector('#episode').content.cloneNode(true)
     const episodeImage = episodeClone.querySelector('#episode_img_item')
     const episodeTitle = episodeClone.querySelector('#episode_data_title')
     const episodeDate = episodeClone.querySelector('#episode_data_date')
     const episodeDescriptiong = episodeClone.querySelector('#episode_data_paragraph')
-    episodeImage.src = element.image.medium
+    if (element.image != null) {
+      episodeImage.src = element.image.medium
+    } else {
+      episodeImage.src = showImg.src
+    }
     const season = element.season.toString()
     episodeTitle.textContent = `S${season.padStart(2, '0')}-${element.name}`
     episodeDate.textContent = element.airdate
     episodeDescriptiong.innerHTML = element.summary
-    main.append(episodeClone)
+    episodesSection.append(episodeClone)
   })
+  main.append(episodesSection)
 }
 
 function createShowData(show) {
+  const header = document.querySelector('header')
   const main = document.querySelector('main')
 
   const showTemplate = document.querySelector('template')
@@ -137,7 +144,7 @@ function createShowData(show) {
   showType.textContent = type
   showDescription.innerHTML = show[0].summary
 
-  renderEp(main, show[0].id)
+  renderEp(main, show[0].id, showImg)
   main.append(showClone)
 }
 
